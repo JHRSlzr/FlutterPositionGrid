@@ -8,6 +8,9 @@ class ControlesPage extends StatefulWidget {
 }
 
 class _controlesState extends State<ControlesPage> {
+
+  //Inicialización de variables
+  //Color del GRID
   Color _contColor1 = Colors.grey;
   Color _contColor2 = Colors.grey;
   Color _contColor3 = Colors.grey;
@@ -17,7 +20,7 @@ class _controlesState extends State<ControlesPage> {
   Color _contColor7 = Colors.grey;
   Color _contColor8 = Colors.grey;
   Color _contColor9 = Colors.grey;
-
+//Icono del GRID
   IconData iconData1 = Icons.clear;
   IconData iconData2 = Icons.clear;
   IconData iconData3 = Icons.clear;
@@ -30,7 +33,7 @@ class _controlesState extends State<ControlesPage> {
 
   int x = 0;
   int y = 0;
-
+//Alerta cuando sale el ratón
   void _showAlertDialog() {
     showDialog(
         context: context,
@@ -52,7 +55,7 @@ class _controlesState extends State<ControlesPage> {
           );
         });
   }
-
+//Reinicio del juego
   void getStart() => {
                 _contColor1 = Colors.grey,
             _contColor2 = Colors.grey,
@@ -78,7 +81,7 @@ class _controlesState extends State<ControlesPage> {
         }),
         _showAlertDialog()
       };
-
+//Validación de posiciones
   void doValidation() => {
         if (x == 0 && y == 0)
           {
@@ -269,36 +272,39 @@ class _controlesState extends State<ControlesPage> {
             iconData8 = Icons.clear,
             iconData9 = Icons.clear,
           },
+          //SALE DE LAS POSICIONES DEL GRID
         if (x < -1 || x > 1 || y < -1 || y > 1) {getStart()}
       };
-
+//hacia arriba
   void upAction() => {
         setState(() {
           y++;
         }),
         doValidation()
       };
-
+//hacia abajo
   void downAction() => {
         setState(() {
           y--;
         }),
         doValidation()
       };
-
+//hacia la derecha
   void turnRight() => {
         setState(() {
           x++;
         }),
         doValidation()
       };
-
+//hacia la izquierda
   void turnLeft() => {
         setState(() {
           x--;
         }),
         doValidation()
       };
+
+      //Grillas
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -347,6 +353,7 @@ class _controlesState extends State<ControlesPage> {
                 child: Icon(iconData9)),
             Container(padding: const EdgeInsets.all(10)),
             FlatButton(
+              //BOTÓN HACIA ARRIBA
                 child: Icon(Icons.arrow_circle_up_sharp),
                 color: Colors.greenAccent,
                 onPressed: upAction),
@@ -354,12 +361,15 @@ class _controlesState extends State<ControlesPage> {
               padding: const EdgeInsets.all(10),
             ),
             FlatButton(
+              //BOTÓN HACIA LA IZQUIERDA
                 child: Icon(Icons.arrow_back_ios),
                 color: Colors.greenAccent,
                 onPressed: turnLeft),
             FlatButton(
+              //BOTÓN REINICIO
                 child: Icon(Icons.autorenew_rounded), onPressed: getStart),
             FlatButton(
+              //BOTÓN HACIA LA DERECHA
                 child: Icon(Icons.arrow_forward_ios),
                 color: Colors.greenAccent,
                 onPressed: turnRight),
@@ -367,6 +377,7 @@ class _controlesState extends State<ControlesPage> {
               padding: const EdgeInsets.all(10),
             ),
             FlatButton(
+              //BOTÓN HACIA ABAJO
                 child: Icon(Icons.arrow_circle_down_sharp),
                 color: Colors.greenAccent,
                 onPressed: downAction),
